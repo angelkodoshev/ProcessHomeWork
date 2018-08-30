@@ -1,0 +1,37 @@
+Ping Pong Refactor:
+
+def ref_ping_pomg() do
+    receive do
+
+	:ping->
+	IO.puts("ping")	
+	:timer.sleep(500)
+	ref_ping_pong()
+
+
+	:pong->
+	IO.puts("pong")
+	:timer.sleep(500)	
+	ref_ping_pong()
+	:stop->
+	IO.puts("Stop")
+	
+    end
+end
+
+
+
+
+Refrigeratop Task 3 
+
+
+
+
+receive do
+{:take,product,quantity}->
+
+	if Map.has_key?(ref,product) do
+	Map.drop(ref,product,ref[product]-(quantity>0))
+	send caller,Map.get(ref,product) 
+   else
+  Map.drop(ref,product)
